@@ -16,8 +16,8 @@ export class PostsResolver {
 
   // Query to get one post
   @Query(() => CreatePostDto)
-  async findPost(@Args('input') input: IdInput) {
-    return this.postService.findId(input);
+  async findPost(@Args('input') id: IdInput) {
+    return this.postService.findId(id);
   }
 
   // create a mutation to create new post
@@ -28,7 +28,15 @@ export class PostsResolver {
 
   // Mutation to update a post
   @Mutation(() => CreatePostDto)
-  async UpdatePost(@Args('input') input: PostUpdateInput) {
+  async updatePost(@Args('input') input: PostUpdateInput) {
     return this.postService.Update(input)
+  }
+
+  // Mutation to delete a post
+  @Mutation(() => String)
+  async deletePost(@Args('id') id: IdInput): Promise<any> {
+    await this.postService.delete(id);
+    // return this.postService.findAll();
+    return 'The post was deleted';
   }
 }

@@ -21,7 +21,8 @@ input IdInput {
 
 type Mutation {
   createPost(input: PostInput!): CreatePostDto!
-  UpdatePost(input: PostUpdateInput!): CreatePostDto!
+  updatePost(input: PostUpdateInput!): CreatePostDto!
+  deletePost(id: IdInput!): String!
 }
 
 input PostInput {

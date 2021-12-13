@@ -36,4 +36,9 @@ export class PostsService {
     post.image = postUpdate.image;
     return post.save();
   }
+
+  // Delete a Post
+  async delete(id: IdInput): Promise<Post> {
+    return await this.postModel.remove(id);
+  }
 }
