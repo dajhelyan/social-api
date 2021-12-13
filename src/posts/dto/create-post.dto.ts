@@ -1,4 +1,4 @@
-import { Field,  ID,  Int, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 // Defining the obj structuro of what i expect to save in the db
 @ObjectType()
 export class CreatePostDto {

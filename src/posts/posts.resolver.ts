@@ -8,7 +8,7 @@ export class PostsResolver {
   // constructor to call postService
   constructor(private readonly postService: PostsService) {}
   // Query to get all posts
-  @Query(() => CreatePostDto)
+  @Query(() => [CreatePostDto])
   async getPosts() {
     return this.postService.findAll();
   }

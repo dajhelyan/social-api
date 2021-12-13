@@ -11,7 +11,7 @@ type CreatePostDto {
 }
 
 type Query {
-  getPosts: CreatePostDto!
+  getPosts: [CreatePostDto!]!
   findPost(input: IdInput!): CreatePostDto!
 }
 
