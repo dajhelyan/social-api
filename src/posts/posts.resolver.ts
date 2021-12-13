@@ -2,14 +2,21 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostInput } from './inputs/post.inputs';
+import { IdInput } from './inputs/post-id.input';
 @Resolver()
 export class PostsResolver {
   // constructor to call postService
   constructor(private readonly postService: PostsService) {}
-  // First query for post
-  @Query(() => String)
-  async Posts() {
-    return 'working';
+  // Query to get all posts
+  @Query(() => CreatePostDto)
+  async getPosts() {
+    return this.postService.findAll();
+  }
+
+  // Query to get one post
+  @Query(() => CreatePostDto)
+  async findPost(@Args('input') input: IdInput) {
+    return this.postService.findId(input);
   }
 
   // create a mutation to create new post
@@ -17,4 +24,5 @@ export class PostsResolver {
   async createPost(@Args('input') input: PostInput) {
     return this.postService.create(input);
   }
+
 }

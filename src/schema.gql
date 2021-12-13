@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type CreatePostDto {
+  id: ID!
   title: String!
   description: String!
   image: String!
@@ -10,7 +11,12 @@ type CreatePostDto {
 }
 
 type Query {
-  Posts: String!
+  getPosts: CreatePostDto!
+  findPost(input: IdInput!): CreatePostDto!
+}
+
+input IdInput {
+  _id: ID!
 }
 
 type Mutation {

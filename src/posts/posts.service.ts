@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-// import { CreatePostDto } from './dto/create-post.dto';
+import { IdInput } from './inputs/post-id.input';
 import { PostInput } from './inputs/post.inputs';
 import { Post, PostDocument } from './post.schema';
 
@@ -13,6 +13,10 @@ export class PostsService {
   async create(createPostDto: PostInput): Promise<Post> {
     const createdPost = new this.postModel(createPostDto);
     return createdPost.save();
+  }
+  // Find Id on the db
+  async findId(post: IdInput): Promise<Post> {
+    return this.postModel.findById(post._id);
   }
 
   async findAll(): Promise<Post[]> {
