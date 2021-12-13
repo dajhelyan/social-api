@@ -21,6 +21,7 @@ input IdInput {
 
 type Mutation {
   createPost(input: PostInput!): CreatePostDto!
+  UpdatePost(input: PostUpdateInput!): CreatePostDto!
 }
 
 input PostInput {
@@ -28,4 +29,11 @@ input PostInput {
   description: String!
   image: String!
   voted: Float = 0
+}
+
+input PostUpdateInput {
+  _id: ID!
+  title: String!
+  description: String!
+  image: String!
 }

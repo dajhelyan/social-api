@@ -3,6 +3,7 @@ import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostInput } from './inputs/post.inputs';
 import { IdInput } from './inputs/post-id.input';
+import { PostUpdateInput } from './inputs/post-update.input';
 @Resolver()
 export class PostsResolver {
   // constructor to call postService
@@ -25,4 +26,9 @@ export class PostsResolver {
     return this.postService.create(input);
   }
 
+  // Mutation to update a post
+  @Mutation(() => CreatePostDto)
+  async UpdatePost(@Args('input') input: PostUpdateInput) {
+    return this.postService.Update(input)
+  }
 }
