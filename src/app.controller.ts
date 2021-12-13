@@ -10,10 +10,10 @@ export class AppController {
     return this.appService.getHello();
   }
   // Get route /new
-  // @Get('new')
-  // newEndpoind() {
-  //   return 'My first get on nest';
-  // }
+  @Get('new')
+  newEndpoind() {
+    return 'My first get on nest';
+  }
 
   // @Get('hola')
   // getPosts() {
